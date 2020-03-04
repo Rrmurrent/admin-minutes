@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Admin</title>
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.min.css" rel="stylesheet">
+  <!--css Stylesheet-->
+  <link href="/css/style.css" rel="stylesheet">
+
+  <style>
+
+.map-container{
+overflow:hidden;
+padding-bottom:56.25%;
+position:relative;
+height:0;
+}
+.map-container iframe{
+left:0;
+top:0;
+height:100%;
+width:100%;
+position:absolute;
+}
+  </style>
+</head>
+
+<body class="bodiez">
+
+  <!--Main Navigation-->
+  <header>
+
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+      <div class="container-fluid">
+
+        <!-- Brand -->
+        <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
+          <strong class="black-text">Minutes 9/7/18</strong>
+        </a>
+      </div>
+    </nav>
+    <!-- Navbar -->
+
+    <!-- Sidebar -->
+    <div class="sidebar-fixed position-fixed container-fluid toDo">
+    
+          <!-- Card header -->
+          <div  style="font-weight: bolder;text-decoration: underline; font-family: Arial; font-size: 30px; margin-top: 10%; margin-left: 35%;">To Do</div>
+          <!-- <strong class="blue-text">To Do</strong> -->
+
+          <!--Card content-->
+          <div class="card-body">
+            
+    
+            <style>
+              .inbox {
+                background: white;
+              }
+          
+              .item {
+                display: flex;
+                align-items: center;
+                border-bottom: 1px solid #F1F1F1;
+              }
+          
+              .item:last-child {
+                border-bottom: 0;
+              }
+          
+          
+              input:checked + p {
+                background: #F9F9F9;
+                text-decoration: line-through;
+              }
+          
+              input[type="checkbox"] {
+                margin: 20px;
+              }
+          
+              p {
+                margin: 0;
+                padding: 20px;
+                transition: background 0.2s;
+                flex: 1;
+                font-family: 'Arial';
+                font-size: 20px;
+                font-weight: 200;
+                border-left: 1px solid #D1E2FF;
+              }
+            </style>
+
+            <div class="inbox">
+              <div class="item">
+                <input type="checkbox">
+                <p>Pay monthly bills</p>
+              </div>
+              <div class="item">
+                <input type="checkbox">
+                <p>Update budget</p>
+              </div>
+              <div class="item">
+                <input type="checkbox">
+                <p>Plan Group Trip</p>
+              </div>
+              <div class="item">
+                <input type="checkbox">
+                <p>Organize Volunteer Day</p>
+              </div>
+              
+              <div class="item">
+                <input type="checkbox">
+                <p>Submit Food Order</p>
+              </div>
+            </div>
+          
+          <script>
+          const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+          
+          let lastChecked;
+          
+          function handleCheck(e) {
+            // Check if they had the shift key down
+            // AND check that they are checking it
+            let inBetween = false;
+            if (e.shiftKey && this.checked) {
+              // go ahead and do what we please
+              // loop over every single checkbox
+              checkboxes.forEach(checkbox => {
+                console.log(checkbox);
+                if (checkbox === this || checkbox === lastChecked) {
+                  inBetween = !inBetween;
+                  console.log('Starting to check them in between!');
+                }
+          
+                if (inBetween) {
+                  checkbox.checked = true;
+                }
+              });
+            }
+          
+            lastChecked = this;
+          }
+          
+          checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
+          </script>
+          </div>
+          <!--/Card body-->
+      </div>
+    <!-- /Sidebar -->
+
+  </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main class="pt-5 mx-lg-5 mainClass">
+
+    <div class="site-wrap" >
+
+    <div class="container-fluid mt-5">
+
+     
+ <!--Grid column-->
+ <div class="col-md-12 mb-4">
+
+  <!--Card-->
+  <div class="card">
+
+  <!-- Card header -->
+  <div class="card-header"></div>
+
+
+    <!--Card content-->
+    <div class="card-body">
+
+      <!-- List group links -->
+      <div class="list-group list-group-flush">
+        <a class="list-group-item ">Attendence
+          <span class="badge badge-success badge-pill pull-right">95%
+            <i class="fas fa-arrow-up ml-1"></i>
+          </span>
+        </a>
+        <a class="list-group-item ">Budget
+          <span class="badge badge-danger badge-pill pull-right">75%
+            <i class="fas fa-arrow-down ml-1"></i>
+          </span>
+        </a>
+        <a class="list-group-item ">Involvement
+          <span class="badge badge-primary badge-pill pull-right">34%</span>
+        </a>
+        <a class="list-group-item ">Issues
+          <span class="badge badge-primary badge-pill pull-right">5</span>
+        </a>
+        <a class="list-group-item ">Announcements
+          <span class="badge badge-primary badge-pill pull-right">8</span>
+        </a>
+      </div>
+      <!-- List group links -->
+
+    </div>
+
+  </div>
+  <!--/.Card-->
+
+</div>
+<!--Grid column-->
+
+      <!--Grid row-->
+      <div class="row fadeIn">
+
+        <!--Grid column-->
+        <div class="col">
+
+          <!--Card-->
+          <div class="card">
+
+          <!-- Card header -->
+          <div class="card-header">Food Prefrence For Next Meeting:</div>
+
+
+            <!--Card content-->
+            <div class="card-body">
+
+              <canvas id="myChart"></canvas>
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <br>
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Card-->
+          <div class="card">
+
+            <!--Card content-->
+            <div class="card-body">
+
+              <!-- Table  -->
+              <table class="table">
+                <!-- Table head -->
+                <thead class="blue lighten-4">
+                  <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Volunteer Opportunities</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <!-- Table head -->
+
+                <!-- Table body -->
+                <tbody>
+                  <tr>
+                    <th scope="row"></th>
+                    <td>Humane Society</td>
+                    <td>Bolder Options</td>
+                    <td>Cultural Sensitivity</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"></th>
+                    <td>Mn State Fair</td>
+                    <td>Environmental</td>
+                    <td>Mentoring</td>
+                  </tr>
+                </tbody>
+                <!-- Table body -->
+              </table>
+              <!-- Table  -->
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Card-->
+          <div class="card">
+
+            <!--Card content-->
+            <div class="card-body">
+
+              <!-- Table  -->
+              <table class="table">
+                <!-- Table head -->
+                <thead class="blue lighten-4">
+                  <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Assistance Requested</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <!-- Table head -->
+
+                <!-- Table body -->
+                <tbody>
+                  <tr>
+                    <th scope="row"></th>
+                    <td>Event Planning</td>
+                    <td>Community Involvement</td>
+                    <td>Mentorship Program</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"></th>
+                    <td>Sponsorships</td>
+                    <td>Volunteer Commitee</td>
+                    <td>Gala</td>
+                  </tr>
+                 
+                </tbody>
+                <!-- Table body -->
+              </table>
+              <!-- Table  -->
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--/Grid column-->
+      </div>
+      <!--/Grid row-->
+     
+
+    </div>
+    <!--/container fluid-->
+
+
+  </div>
+
+
+  </main>
+  <!--Main layout-->
+
+  <!--Footer-->
+  <footer">
+
+
+  
+  </footer>
+  <!--/.Footer-->
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- Initializations -->
+  
+
+  <!-- Charts -->
+  <script>
+    // Line
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["Pizza", "Burritos", "Taco Bar", "Subs", "Buffalo Chicken", "Pasta Bar"],
+        datasets: [{
+          label: '# of Votes',
+          data: [12, 19, 3, 5, 2, 3],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  </script>
+
+  <!--Google Maps-->
+  <!-- <script src="https://maps.google.com/maps/api/js"></script> -->
+
+</body>
+
+</html>
